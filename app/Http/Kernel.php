@@ -33,14 +33,14 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
+            // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
         'api' => [
-            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
+            'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
@@ -56,6 +56,7 @@ class Kernel extends HttpKernel
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
@@ -65,44 +66,4 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
-
-    protected $routeMiddleware = [
-        // Other middleware entries
-        'role' => \App\Http\Middleware\RoleMiddleware::class,
-
-        'checkUsersManagement' => \App\Http\Middleware\CheckUsersManagementPermission::class,
-        'checkStudentManagement' => \App\Http\Middleware\CheckStudentManagementPermission::class,
-        'checkProfessorManagement' => \App\Http\Middleware\CheckProfessorManagementPermission::class,
-        'checkStaffManagement' => \App\Http\Middleware\CheckStaffManagementPermission::class,
-        'checkAlumniManagement' => \App\Http\Middleware\CheckAlumniManagementPermission::class,
-        'checkAdminManagement' => \App\Http\Middleware\CheckAdminManagementPermission::class,
-
-        'checkActivityManagement' => \App\Http\Middleware\CheckActivityManagementPermission::class,
-        'checkContentManagement' => \App\Http\Middleware\CheckContentManagementPermission::class,
-        'checkTimetableManagement' => \App\Http\Middleware\CheckTimetableManagementPermission::class,
-        'checkPrefixManagement' => \App\Http\Middleware\CheckPrefixManagementPermission::class,
-        'checkFacultyManagement' => \App\Http\Middleware\CheckFacultyManagementPermission::class,
-        'checkSubjectManagement' => \App\Http\Middleware\CheckSubjectManagementPermission::class,
-        'checkRoomManagement' => \App\Http\Middleware\CheckRoomManagementPermission::class,
-        'checkGroupChatManagement' => \App\Http\Middleware\CheckGroupChatManagementPermission::class,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ];
 }
-
-
-
