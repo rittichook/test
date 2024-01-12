@@ -41,9 +41,6 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
-require __DIR__.'/../vendor/autoload.php';
-
-
 /*
 |--------------------------------------------------------------------------
 | Return The Application

@@ -1,4 +1,0 @@
-                {{-- <!-- Footer -->
-                <div class="footer">
-                    <p>Footer content</p>
-                </div> --}}
